@@ -2,8 +2,10 @@
 
 ### I'm a python backend developer
 
-Here are some ideas to get you started:
+
 <!--
+Here are some ideas to get you started:
+
 - 🔭 I’m currently working on 
 - 🌱 I’m currently learning ...
 - 👯 I’m looking to collaborate on ...
