@@ -1,4 +1,4 @@
-### Hi, i'm Petr
+### Hi, i'm Petr :wave:
 
 ## I'm a python backend developer
 
