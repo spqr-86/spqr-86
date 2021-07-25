@@ -1,6 +1,6 @@
 ### Hi, i'm Petr
 
-## I'm a backend developer
+## I'm a python backend developer
 
 Here are some ideas to get you started:
 
