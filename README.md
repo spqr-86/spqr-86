@@ -1,6 +1,6 @@
 ### Hi, i'm Petr :wave:
 
-## I'm a python backend developer
+### I'm a python backend developer
 
 Here are some ideas to get you started:
 
