@@ -41,6 +41,4 @@
 
 🚀 Always interested in challenging AI projects
 
-<div align="center">
-  <img src="https://komarev.com/ghpvc/?username=spqr-86&color=blue&style=flat-square" alt="Profile views" />
-</div>
+### 🔥 Featured Projects
