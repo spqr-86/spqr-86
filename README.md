@@ -11,11 +11,7 @@
 
 👯 Looking to collaborate on LLM/RAG projects with real-world impact
 
-💬 Ask me about LangChain, RAG systems, Prompt Engineering, or Industrial Safety
-
 📫 Reach me at: petr.baldaev.ds@gmail.com or @PetrBaldaev
-
-⚡ Fun fact: I combine 15 years of industrial safety expertise with modern AI to solve real problems
 
 ### 🛠️ Tech Stack
 ### AI/ML & NLP
