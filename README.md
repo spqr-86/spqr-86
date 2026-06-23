@@ -12,8 +12,6 @@
 
 🏗️ Architecture I work with: **Router → RAG Agent (ReAct, LangGraph) → Verifier**
 
-🌱 Currently: Google AI Agents Intensive (Google ADK · Gemini · Cloud Run)
-
 📫 Reach me: petr.baldaev.ds@gmail.com | Telegram: @PetrBaldaev
 
 💼 Open to AI Engineer roles — Remote / Moscow / International
