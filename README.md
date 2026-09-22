@@ -11,50 +11,32 @@ I build AI systems for **document-heavy and enterprise workflows** — with meas
 
 ---
 
+## What I build
+
+- **Evidence-grounded retrieval systems** — hybrid search, reranking, explicit abstention and component-level evaluation.
+- **Controlled LLM workflows** — the model interprets requests while permissions, validation, state transitions and irreversible actions stay deterministic.
+- **Document intelligence pipelines** — extract, compare and validate information across complex enterprise documents, with failures tracked instead of hidden.
+
+---
+
 ## Selected systems
 
 | System | Problem | Engineering evidence |
 |---|---|---|
-| 🏭 **Water Treatment Analyzer** | Technical specification vs supplier proposal | Commercial pilot · expert-reviewed evaluation · deterministic numeric/unit validation |
-| 🧩 **Enterprise Employee Agent** | Knowledge + controlled enterprise actions | RBAC · typed commands · versioned confirmation · idempotency · transactions · audit |
 | 🔎 **[Regulatory RAG](https://github.com/spqr-86/regulatory-rag)** | Evidence-grounded regulatory & corporate Q&A | HR@12 **0.81** · MRR **0.50** · faithfulness **0.926** · explicit abstention |
 | 🛠 **[Research State MCP](https://github.com/spqr-86/research-state-mcp)** | Research context, state & citation infrastructure | Model-free MCP · 272 tests · real MCP E2E · measured retrieval & citation evals |
-
----
-
-### 🏭 Water Treatment Analyzer
-
-Applied document intelligence for automated comparison of technical specifications against supplier proposals.
-
-`PDF → parsing/OCR → requirement extraction → retrieval → gap analysis → deterministic validation → report`
-
-Built for a commercial pilot using domain-expert annotations. The strongest reviewed dataset reached **105/109 (96.3%)**; other evaluated document sets were approximately **75–85%**, with remaining failures tracked by category.
-
-**Why it matters:** the LLM handles document interpretation, while numeric/unit comparison and validation remain deterministic.
-
-> Private commercial code and data. A sanitized public showcase is planned.
-
----
-
-### 🧩 Enterprise Employee Agent
-
-An LLM-assisted enterprise workflow where the model can interpret requests, but **cannot authorize actions or mutate state**.
-
-`user request → structured intent → authorization → versioned preview → explicit confirmation → idempotent mutation → audit event`
-
-Built around strict Pydantic contracts, RBAC, deterministic state transitions, version-bound confirmation, atomic SQLite transactions and append-only audit history.
-
-**Why it matters:** model behavior is constrained by software invariants rather than trusted to enforce business rules.
-
-> Private while the integrated application layer and demo are being completed.
+| 🧩 **[Enterprise Employee Agent](https://github.com/spqr-86/enterprise-employee-agent)** | Knowledge + controlled enterprise actions | In development · typed workflow architecture · deterministic authorization / confirmation boundaries |
+| 🏭 **Water Treatment Analyzer** | Technical specification vs supplier proposal | Commercial pilot · expert-reviewed evaluation · deterministic numeric/unit validation |
 
 ---
 
 ### 🔎 [Regulatory RAG](https://github.com/spqr-86/regulatory-rag)
 
-Evidence-gated RAG for regulatory and corporate knowledge where unsupported confidence is worse than explicit abstention.
+**Problem:** regulatory and corporate Q&A becomes unreliable when retrieval is weak but the model still answers confidently.
 
-Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation. Current evaluation includes **HR@12 0.81, MRR 0.50, in-scope correctness 7.91/10, faithfulness 0.926**, plus explicit out-of-scope and failure analysis.
+**Approach:** hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation, with explicit abstention when evidence is insufficient.
+
+**Evidence:** current evaluation includes **HR@12 0.81, MRR 0.50, in-scope correctness 7.91/10 and faithfulness 0.926**, plus explicit out-of-scope and failure analysis.
 
 **Why it matters:** failures can be attributed to retrieval, evidence sufficiency or generation instead of being hidden behind one end-to-end score.
 
@@ -62,11 +44,41 @@ Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separat
 
 ### 🛠 [Research State MCP](https://github.com/spqr-86/research-state-mcp)
 
-A **model-free** MCP layer for research state, relevant page fragments and citation-aware context.
+**Problem:** research agents need persistent state, relevant source fragments and reliable citations without adding another LLM or embedding layer by default.
 
-Uses SQLite and FTS5 instead of adding embeddings or another LLM where they are not required. The suite includes **272 tests**, with end-to-end smoke scenarios through the real FastMCP client/server protocol. Retrieval and citation evals have directly changed implementation invariants, including ellipsis handling and minimum quote length.
+**Approach:** a **model-free** MCP layer using SQLite and FTS5 for research state, retrieval and citation-aware context.
+
+**Evidence:** **272 tests**, including end-to-end smoke scenarios through the real FastMCP client/server protocol. Retrieval and citation evals have directly changed implementation invariants, including ellipsis handling and minimum quote length.
 
 **Why it matters:** architecture is driven by the problem and measured trade-offs, not by adding AI components by default.
+
+---
+
+### 🧩 [Enterprise Employee Agent](https://github.com/spqr-86/enterprise-employee-agent)
+
+**Problem:** an LLM can interpret an employee request, but it should not be trusted to authorize actions or mutate enterprise state by itself.
+
+**Approach:** a knowledge + typed workflow architecture for a controlled leave-of-absence flow, with deterministic boundaries around authorization, preview/confirmation, mutation and audit.
+
+**Status:** public implementation is **in development**. The repository currently establishes the installable package, development framework, specification and local checks; product logic and the minimal corpus are being implemented.
+
+**Target invariant:** the model interprets the request; software invariants own permissions and state-changing actions.
+
+---
+
+### 🏭 Water Treatment Analyzer
+
+**Problem:** compare technical specifications against supplier proposals across document-heavy engineering workflows.
+
+**Approach:**
+
+`PDF → parsing/OCR → requirement extraction → retrieval → gap analysis → deterministic validation → report`
+
+**Evidence:** built for a commercial pilot using domain-expert annotations. The strongest reviewed dataset reached **105/109 (96.3%)**; other evaluated document sets were approximately **75–85%**, with remaining failures tracked by category.
+
+**Why it matters:** the LLM handles document interpretation, while numeric/unit comparison and validation remain deterministic.
+
+> Private commercial code and data. A sanitized public showcase is planned.
 
 ---
 
