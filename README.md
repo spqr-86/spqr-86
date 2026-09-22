@@ -18,7 +18,7 @@ I build AI systems for **document-heavy and enterprise workflows** — with meas
 | 🏭 **Water Treatment Analyzer** | Technical specification vs supplier proposal | Commercial pilot · expert-reviewed evaluation · deterministic numeric/unit validation |
 | 🧩 **Enterprise Employee Agent** | Knowledge + controlled enterprise actions | RBAC · typed commands · versioned confirmation · idempotency · transactions · audit |
 | 🔎 **[Regulatory RAG](https://github.com/spqr-86/regulatory-rag)** | Evidence-grounded regulatory & corporate Q&A | HR@12 **0.81** · MRR **0.50** · faithfulness **0.926** · explicit abstention |
-| 🛠 **[Research State MCP](https://github.com/spqr-86/research-state-mcp)** | Research context, state & citation infrastructure | Model-free MCP · SQLite/FTS5 · measured context/citation trade-offs |
+| 🛠 **[Research State MCP](https://github.com/spqr-86/research-state-mcp)** | Research context, state & citation infrastructure | Model-free MCP · 272 tests · real MCP E2E · measured retrieval & citation evals |
 
 ---
 
@@ -64,7 +64,7 @@ Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separat
 
 A **model-free** MCP layer for research state, relevant page fragments and citation-aware context.
 
-Uses SQLite and FTS5 instead of adding embeddings or another LLM where they are not required. Experiments measure context-recall and citation-validation trade-offs and feed results back into design decisions.
+Uses SQLite and FTS5 instead of adding embeddings or another LLM where they are not required. The suite includes **272 tests**, with end-to-end smoke scenarios through the real FastMCP client/server protocol. Retrieval and citation evals have directly changed implementation invariants, including ellipsis handling and minimum quote length.
 
 **Why it matters:** architecture is driven by the problem and measured trade-offs, not by adding AI components by default.
 
