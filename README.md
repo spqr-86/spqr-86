@@ -16,8 +16,8 @@ I build AI systems for **document-heavy and enterprise workflows** — with meas
 | System | Problem | Engineering evidence |
 |---|---|---|
 | 🏭 **Water Treatment Analyzer** | Technical specification vs supplier proposal | Commercial pilot · expert-reviewed evaluation · deterministic numeric/unit validation |
-| 🧩 **Enterprise Employee Agent** | Knowledge + controlled enterprise actions | RBAC · typed commands · versioned confirmation · idempotency · transactions · audit |
-| 🔎 **[Regulatory RAG](https://github.com/spqr-86/regulatory-rag)** | Evidence-grounded regulatory & corporate Q&A | HR@12 **0.81** · MRR **0.50** · faithfulness **0.926** · explicit abstention |
+| 🧩 **[Enterprise Employee Agent](https://github.com/spqr-86/enterprise-employee-agent)** | Knowledge + controlled enterprise actions | RBAC · typed commands · versioned confirmation · idempotency · transactions · audit |
+| 🔎 **[Regulatory RAG](https://github.com/spqr-86/regulatory-rag)** | Evidence-grounded regulatory & corporate Q&A | HR@12 **0.81** · MRR **0.50** on held-out practitioner questions · explicit abstention |
 | 🛠 **[Research State MCP](https://github.com/spqr-86/research-state-mcp)** | Research context, state & citation infrastructure | Model-free MCP · 272 tests · real MCP E2E · measured retrieval & citation evals |
 
 ---
@@ -28,7 +28,7 @@ Applied document intelligence for automated comparison of technical specificatio
 
 `PDF → parsing/OCR → requirement extraction → retrieval → gap analysis → deterministic validation → report`
 
-Built for a commercial pilot using domain-expert annotations. The strongest reviewed dataset reached **105/109 (96.3%)**; other evaluated document sets were approximately **75–85%**, with remaining failures tracked by category.
+Built for a commercial pilot using domain-expert annotations. The strongest reviewed dataset reached **105/109 (96.3%)**; a harder set improved from 74% to roughly **82–85%**, with remaining failures tracked by category.
 
 **Why it matters:** the LLM handles document interpretation, while numeric/unit comparison and validation remain deterministic.
 
@@ -36,7 +36,7 @@ Built for a commercial pilot using domain-expert annotations. The strongest revi
 
 ---
 
-### 🧩 Enterprise Employee Agent
+### 🧩 [Enterprise Employee Agent](https://github.com/spqr-86/enterprise-employee-agent)
 
 An LLM-assisted enterprise workflow where the model can interpret requests, but **cannot authorize actions or mutate state**.
 
@@ -46,7 +46,7 @@ Built around strict Pydantic contracts, RBAC, deterministic state transitions, v
 
 **Why it matters:** model behavior is constrained by software invariants rather than trusted to enforce business rules.
 
-> Private while the integrated application layer and demo are being completed.
+End-to-end employee → HR → manager flow with a server-rendered FastAPI demo; **464 tests**. Educational project on the public GitLab Handbook, not production.
 
 ---
 
@@ -54,7 +54,7 @@ Built around strict Pydantic contracts, RBAC, deterministic state transitions, v
 
 Evidence-gated RAG for regulatory and corporate knowledge where unsupported confidence is worse than explicit abstention.
 
-Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation. Current evaluation includes **HR@12 0.81, MRR 0.50, in-scope correctness 7.91/10, faithfulness 0.926**, plus explicit out-of-scope and failure analysis.
+Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation. Retrieval: **HR@12 0.81, MRR 0.50** on 90 practitioner questions never used for tuning. Generation (LLM-as-judge): faithfulness **0.974**, correctness **8.09/10** against a golden set that a 28 Sep legal audit found partly wrong — a new baseline is pending, and the audit itself is part of the story.
 
 **Why it matters:** failures can be attributed to retrieval, evidence sufficiency or generation instead of being hidden behind one end-to-end score.
 
