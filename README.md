@@ -46,7 +46,7 @@ Built around strict Pydantic contracts, RBAC, deterministic state transitions, v
 
 **Why it matters:** model behavior is constrained by software invariants rather than trusted to enforce business rules.
 
-End-to-end employee → HR → manager flow with a server-rendered FastAPI demo; **464 tests**. Educational project on the public GitLab Handbook, not production.
+End-to-end employee → HR → manager flow with a server-rendered FastAPI demo, one-command Docker Compose launch; **464 tests**. Educational project on the public GitLab Handbook, not production.
 
 ---
 
