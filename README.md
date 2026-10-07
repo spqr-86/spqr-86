@@ -28,7 +28,7 @@ Applied document intelligence for automated comparison of technical specificatio
 
 `PDF → parsing/OCR → requirement extraction → retrieval → gap analysis → deterministic validation → report`
 
-Built for a commercial pilot. On the first site the client's process engineer reviewed the system's report and confirmed **105 of 109** requirement statuses; all four misses were over-cautious flags, not missed gaps. A harder site with cross-section references scored 72% in April; after fixes an approximate re-count gives 82–85% (requirement splitting changed, so not an exact comparison). Remaining failures are tracked by category.
+Built for a commercial pilot. The client's process engineers reviewed the system's reports: on one site they confirmed **105 of 109** requirement statuses (all four misses were over-cautious flags, not missed gaps); on the hardest one, about 82–85%. Remaining failures are tracked by category.
 
 **Why it matters:** the LLM handles document interpretation, while numeric/unit comparison and validation remain deterministic.
 
