@@ -28,7 +28,7 @@ Applied document intelligence for automated comparison of technical specificatio
 
 `PDF → parsing/OCR → requirement extraction → retrieval → gap analysis → deterministic validation → report`
 
-Built for a commercial pilot using domain-expert annotations. The strongest reviewed dataset reached **105/109 (96.3%)**; a harder set improved from 74% to roughly **82–85%**, with remaining failures tracked by category.
+Built for a commercial pilot. On the first site the client's process engineer reviewed the system's report and confirmed **105 of 109** requirement statuses; all four misses were over-cautious flags, not missed gaps. A harder site with cross-section references scored 72% in April; after fixes an approximate re-count gives 82–85% (requirement splitting changed, so not an exact comparison). Remaining failures are tracked by category.
 
 **Why it matters:** the LLM handles document interpretation, while numeric/unit comparison and validation remain deterministic.
 
@@ -54,7 +54,7 @@ End-to-end employee → HR → manager flow with a server-rendered FastAPI demo;
 
 Evidence-gated RAG for regulatory and corporate knowledge where unsupported confidence is worse than explicit abstention.
 
-Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation. Retrieval: **HR@12 0.81, MRR 0.50** on 90 practitioner questions never used for tuning. Generation (LLM-as-judge): faithfulness **0.974**, correctness **8.09/10** against a golden set that a 28 Sep legal audit found partly wrong — a new baseline is pending, and the audit itself is part of the story.
+Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation. Retrieval: **HR@12 0.81, MRR 0.50** on 90 practitioner questions never used for tuning. Out-of-scope questions: abstained on 7/7. Generation faithfulness to retrieved sources (LLM judge): **0.974**. A 28 Sep legal audit found the generation golden set partly wrong, so the earlier correctness score is withdrawn and a new baseline is pending — the audit itself is part of the story.
 
 **Why it matters:** failures can be attributed to retrieval, evidence sufficiency or generation instead of being hidden behind one end-to-end score.
 
@@ -79,11 +79,9 @@ Uses SQLite and FTS5 instead of adding embeddings or another LLM where they are 
 
 ---
 
-## Other engineering work
+## Other work
 
-[Corporate Knowledge Assistant](https://github.com/spqr-86/corporate-knowledge-assistant) ·
-[ERC3 Agents](https://github.com/spqr-86/erc3-agents) ·
-[Customer Support Chatbot](https://github.com/spqr-86/customer-support-chatbot)
+[AI Agents Security Week (Yandex SHAD)](https://github.com/spqr-86/shad-security-week) — red team + blue team guardrail, certificate 179/200.
 
 ---
 
