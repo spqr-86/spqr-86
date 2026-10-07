@@ -17,7 +17,7 @@ I build AI systems for **document-heavy and enterprise workflows** — with meas
 |---|---|---|
 | 🏭 **Water Treatment Analyzer** | Technical specification vs supplier proposal | Commercial pilot · expert-reviewed evaluation · deterministic numeric/unit validation |
 | 🧩 **[Enterprise Employee Agent](https://github.com/spqr-86/enterprise-employee-agent)** | Knowledge + controlled enterprise actions | RBAC · typed commands · versioned confirmation · idempotency · transactions · audit |
-| 🔎 **[Regulatory RAG](https://github.com/spqr-86/regulatory-rag)** | Evidence-grounded regulatory & corporate Q&A | HR@12 **0.81** · MRR **0.50** on held-out practitioner questions · explicit abstention |
+| 🔎 **[Regulatory RAG](https://github.com/spqr-86/regulatory-rag)** | Site-specific regulatory requirements Q&A | HR@12 **0.81** · MRR **0.50** on held-out practitioner questions · explicit abstention |
 | 🛠 **[Research State MCP](https://github.com/spqr-86/research-state-mcp)** | Research context, state & citation infrastructure | Model-free MCP · 272 tests · real MCP E2E · measured retrieval & citation evals |
 
 ---
@@ -28,7 +28,7 @@ Applied document intelligence for automated comparison of technical specificatio
 
 `PDF → parsing/OCR → requirement extraction → retrieval → gap analysis → deterministic validation → report`
 
-Built for a commercial pilot. The client's process engineers reviewed the system's reports: on one site they confirmed **105 of 109** requirement statuses (all four misses were over-cautious flags, not missed gaps); on the hardest one, about 82–85%. Remaining failures are tracked by category.
+Built for a commercial pilot. The client's process engineers reviewed the system's reports: on one site they confirmed **105 of 109** requirement statuses (all four misses were over-cautious flags, not missed gaps). The client uses it for first-pass review: the engineer checks a ready list of discrepancies with citations instead of searching the documents by hand. Remaining failures are tracked by category.
 
 **Why it matters:** the LLM handles document interpretation, while numeric/unit comparison and validation remain deterministic.
 
@@ -52,7 +52,7 @@ End-to-end employee → HR → manager flow with a server-rendered FastAPI demo,
 
 ### 🔎 [Regulatory RAG](https://github.com/spqr-86/regulatory-rag)
 
-Evidence-gated RAG for regulatory and corporate knowledge where unsupported confidence is worse than explicit abstention.
+Evidence-gated assistant for site-specific regulatory requirements (occupational and fire safety): a unit asks about its own site, the system answers from federal regulations and internal policies, applies them to the site's facts, asks for a missing fact and abstains without a source. Every query is logged to Postgres + Grafana with cost (~$0.002), latency and user rating.
 
 Hybrid retrieval, reranking and evidence sufficiency gates are evaluated separately from generation. Retrieval: **HR@12 0.81, MRR 0.50** on 90 practitioner questions never used for tuning. Out-of-scope questions: abstained on 7/7. Generation faithfulness to retrieved sources (LLM judge): **0.974**. A 28 Sep legal audit found the generation golden set partly wrong, so the earlier correctness score is withdrawn and a new baseline is pending — the audit itself is part of the story.
 
